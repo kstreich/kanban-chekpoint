@@ -6,7 +6,8 @@ let schemaName = 'List'
 let schema = new Schema({
   name: { type: String, required: true },
   description: { type: String, required: true },
-  boardId: { type: ObjectId, ref: 'Board', required: true }
+  boardId: { type: ObjectId, ref: 'Board', required: true },
+  authorId: { type: ObjectId, ref: 'User', required: true }
 })
 
 module.exports = mongoose.model(schemaName, schema)

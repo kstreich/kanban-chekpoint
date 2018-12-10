@@ -1,8 +1,8 @@
 let router = require('express').Router()
 let Comments = require('../models/comment')
 
-router.get('/', (req, res, next) => {
-  Comments.find({ taskId: req.session.taskId })
+router.get('/:taskId', (req, res, next) => {
+  Comments.find({ taskId: req.params.taskId })
     .then(data => {
       res.send(data)
     })
@@ -13,7 +13,6 @@ router.get('/', (req, res, next) => {
 })
 
 router.post('/', (req, res, next) => {
-  req.body.taskId = req.session.taskId
   Comments.create(req.body)
     .then(newComment => {
       res.send(newComment)
@@ -27,7 +26,7 @@ router.post('/', (req, res, next) => {
 router.put('/:id', (req, res, next) => {
   Comments.findById(req.params.id)
     .then(comment => {
-      if (!comment.taskId.equals(req.session.taskId)) {
+      if (!comment.authorId.equals(req.session.uid)) {
         return res.status(401).send("ACCESS DENIED!")
       }
       comment.update(req.body, (err) => {
@@ -48,7 +47,7 @@ router.put('/:id', (req, res, next) => {
 router.delete('/:id', (req, res, next) => {
   Comments.findById(req.params.id)
     .then(comment => {
-      if (!comment.taskId.equals(req.session.taskId)) {
+      if (!comment.authorId.equals(req.session.uid)) {
         return res.status(401).send("ACCESS DENIED!")
       }
       comment.remove(err => {

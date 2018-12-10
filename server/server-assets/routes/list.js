@@ -1,9 +1,9 @@
 let router = require('express').Router()
 let Lists = require('../models/list')
 
-//get a list
-router.get('/', (req, res, next) => {
-  Lists.find({ boardId: req.session.boardId })
+//get all lists
+router.get('/:boardId', (req, res, next) => {
+  Lists.find({ boardId: req.params.boardId })
     .then(data => {
       res.send(data)
     })
@@ -15,7 +15,7 @@ router.get('/', (req, res, next) => {
 
 //Create a list
 router.post('/', (req, res, next) => {
-  req.body.boardId = req.session.boardId
+  // req.body.boardId = req.session.boardId
   Lists.create(req.body)
     .then(newList => {
       res.send(newList)
@@ -30,7 +30,7 @@ router.post('/', (req, res, next) => {
 router.put('/:id', (req, res, next) => {
   Lists.findById(req.params.id)
     .then(list => {
-      if (!list.boardId.equals(req.session.boardId)) {
+      if (!list.authorId.equals(req.session.uid)) {
         return res.status(401).send("ACCESS DENIED!")
       }
       list.update(req.body, (err) => {

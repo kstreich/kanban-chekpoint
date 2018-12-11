@@ -13,6 +13,7 @@ router.get('/:listId', (req, res, next) => {
 })
 
 router.post('/', (req, res, next) => {
+  req.body.authorId = req.session.uid
   Task.create(req.body)
     .then(newTask => {
       res.send(newTask)

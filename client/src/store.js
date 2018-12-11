@@ -21,8 +21,9 @@ export default new Vuex.Store({
   state: {
     user: {},
     boards: [],
-    activeBoard: {},
-    lists: [] // OR AN OBJECT???
+    // activeBoard: {},
+    lists: [],// OR AN OBJECT???
+    tasks: {}  //this is where we are going to create a dictionary with comments as the value, tasks as the key
   },
   mutations: {
     setUser(state, user) {
@@ -31,8 +32,11 @@ export default new Vuex.Store({
     setBoards(state, boards) {
       state.boards = boards
     },
-    newList(state, list) {
-      state.lists = list
+    newLists(state, lists) {
+      state.lists = lists
+    },
+    newTask(state, task) {
+      state.tasks = task
     }
   },
   actions: {
@@ -63,6 +67,7 @@ export default new Vuex.Store({
     getBoards({ commit, dispatch }) {
       api.get('boards')
         .then(res => {
+          console.log('boards:', res)
           commit('setBoards', res.data)
         })
     },
@@ -83,8 +88,30 @@ export default new Vuex.Store({
     createList({ commit, dispatch }, listConfig) {
       api.post('lists', listConfig)
         .then(res => {
-          console.log('new list', res)
-          commit("newList", res.data)
+          console.log('new list', res.data)
+          dispatch('getLists', listConfig.boardId)
+        })
+    },
+
+    getLists({ commit }, boardId) {
+      api.get('lists/' + boardId)
+        .then(res => {
+          console.log('list data:', res.data)
+          commit('newLists', res.data)
+        })
+    },
+
+    //TASKS
+    getTasks({ commit, dispatch }, listId) {
+      api.get('tasks/' + listId)
+        .then(res => {
+          commit('newTask', res.data)
+        })
+    },
+    createTask({ commit, dispatch }, taskDetails) {
+      api.post('tasks/', taskDetails)
+        .then(res => {
+
         })
     }
   }

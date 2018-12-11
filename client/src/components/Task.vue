@@ -1,12 +1,24 @@
 <template>
+  <div class="">
 
+  </div>
 </template>
 
 <script>
   export default {
-    name: 'Task'
+    name: 'Task',
+    data() {
+      return {
+
+      }
+    },
+    computed: {},
+    methods: {}
   }
+
 </script>
 
-<style scoped>
+<style>
+
+
 </style>

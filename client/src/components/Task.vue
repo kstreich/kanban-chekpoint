@@ -13,7 +13,10 @@
       }
     },
     computed: {},
-    methods: {}
+    methods: {},
+    props: [
+      'taskData'
+    ]
   }
 
 </script>

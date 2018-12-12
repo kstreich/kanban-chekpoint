@@ -1,12 +1,13 @@
 <template>
   <div v-if="" class="tasks">
     <p>This is where we pull our tasks</p>
-    {{tasks}}
-    <form @submit="createTask">
+    <form @submit.prevent="createTask">
       <label for="desc"> Task description </label>
       <input name="desc" type="text" v-model="taskConfig.description">
       <button type="submit">Add</button>
     </form>
+    {{tasks}}
+    <task v-for="task in tasks" :taskData="task"></task>
 
   </div>
 </template>
@@ -16,9 +17,12 @@
   export default {
     name: 'List',
     mounted() {
-      return this.$store.dispatch('getTasks', this.listId)
-    },
 
+      return this.$store.dispatch('getTasks', this.listData._id)
+    },
+    props: [
+      "listData"
+    ],
     data() {
       return {
         taskConfig: {
@@ -27,15 +31,9 @@
       }
     },
     computed: {
-      listId() {
-        return this.$store.state.lists[0]._id
-      },
       tasks() {
         return this.$store.state.tasks
       },
-      boardId() {
-        return this.$store.state.lists[0].boardId
-      }
     },
     methods: {
       createList() {
@@ -43,9 +41,12 @@
       },
       createTask() {
 
-        this.$store.dispatch('createTask', { description: this.taskConfig.description, listId: this.listId, boardId: this.boardId })
+        this.$store.dispatch('createTask', { description: this.taskConfig.description, listId: this.listData._id, boardId: this.listData.boardId })
       }
     },
+    components: {
+      Task
+    }
 
   }
 

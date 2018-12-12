@@ -9,8 +9,7 @@
       <button type="submit">Add</button>
     </form>
     {{lists}}
-    <list></list>
-
+    <list v-for="list in lists" :listData="list"></list>
   </div>
 </template>
 
@@ -21,7 +20,7 @@
     mounted() {
       //dispatch to action that will send a get request to get the board with this.boardId (might be this.$route.params.boardId)
       //dispatch to get lists by boardId
-      return this.$store.dispatch('getLists', this.boardId)
+      return this.$store.dispatch('getLists', this.$route.params.boardId)
     },
     data() {
       return {
@@ -38,16 +37,18 @@
     },
     methods: {
       createList() {
+        debugger
         this.$store.dispatch('createList', { name: this.listConfig.name, description: this.listConfig.description, boardId: this.boardId })
       }
     },
 
-    created() {
-      //blocks users not logged in
-      if (!this.$store.state.user._id) {
-        this.$router.push({ name: "login" });
-      }
-    },
+    //dont run because authenticate is being handled in main.js
+    // created() {
+    //   //blocks users not logged in
+    //   if (!this.$store.state.user._id) {
+    //     this.$router.push({ name: "login" });
+    //   }
+    // },
     components: {
       List
     },

@@ -35,8 +35,8 @@ export default new Vuex.Store({
     newLists(state, lists) {
       state.lists = lists
     },
-    newTask(state, task) {
-      state.tasks = task
+    newTask(state, tasks) {
+      state.tasks = tasks
     }
   },
   actions: {
@@ -52,7 +52,11 @@ export default new Vuex.Store({
       auth.get('authenticate')
         .then(res => {
           commit('setUser', res.data)
-          router.push({ name: 'boards' })
+          // router.push({ name: 'boards' })
+        })
+        .catch(err => {
+          console.error(err)
+          router.push({ name: 'login' })
         })
     },
     login({ commit, dispatch }, creds) {
@@ -105,13 +109,14 @@ export default new Vuex.Store({
     getTasks({ commit, dispatch }, listId) {
       api.get('tasks/' + listId)
         .then(res => {
+          console.log('tasks:', res.data)
           commit('newTask', res.data)
         })
     },
     createTask({ commit, dispatch }, taskDetails) {
       api.post('tasks/', taskDetails)
         .then(res => {
-
+          dispatch('getTasks', taskDetails.listId)
         })
     }
   }

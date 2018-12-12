@@ -8,8 +8,9 @@
       <input name="desc" type="text" v-model="listConfig.description">
       <button type="submit">Add</button>
     </form>
-    {{lists}}
-    <list v-for="list in lists" :listData="list"></list>
+
+    <list v-for="list in lists" :listData="list">
+    </list>
   </div>
 </template>
 
@@ -37,7 +38,7 @@
     },
     methods: {
       createList() {
-        debugger
+
         this.$store.dispatch('createList', { name: this.listConfig.name, description: this.listConfig.description, boardId: this.boardId })
       }
     },
@@ -59,3 +60,9 @@
   //board id is from the board
   //display the boards first 
 </script>
+
+<style>
+  .borderBox {
+    border: black solid 3px;
+  }
+</style>

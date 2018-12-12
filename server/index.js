@@ -4,7 +4,7 @@ var server = express()
 var cors = require('cors')
 var port = 3000
 
-var whitelist = ['http://localhost:8080'];
+var whitelist = ['http://localhost:8081'];
 var corsOptions = {
   origin: function (origin, callback) {
     var originIsWhitelisted = whitelist.indexOf(origin) !== -1;

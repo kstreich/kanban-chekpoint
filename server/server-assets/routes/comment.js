@@ -13,6 +13,7 @@ router.get('/:taskId', (req, res, next) => {
 })
 
 router.post('/', (req, res, next) => {
+  req.body.authorId = req.session.uid
   Comments.create(req.body)
     .then(newComment => {
       res.send(newComment)

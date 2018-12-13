@@ -168,10 +168,16 @@ export default new Vuex.Store({
         })
     },
     deleteTask({ commit, dispatch }, taskData) {
-      debugger
       api.delete('tasks/' + taskData.taskId)
         .then(res => {
           dispatch('getTasks', taskData.listId)
+
+        })
+    },
+    moveTask({ commit, dispatch }, data) {
+      api.put('tasks/' + data.taskId, data)
+        .then(res => {
+          dispatch('getLists', res.data.boardId)
 
         })
     }

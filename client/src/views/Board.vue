@@ -1,7 +1,7 @@
 <template>
   <div v-if="" class="board">
     <img src="https://thumbs.gfycat.com/WidePowerfulBeauceron-small.gif">
-    <img src="https://thumbs.gfycat.com/WidePowerfulBeauceron-small.gif">
+
     <h3>This is the Board View</h3>
     <form @submit.prevent="createList">
       <label for="listName"> Enter List Name </label>

@@ -5,7 +5,7 @@
     <h3 class="mb-5">List Description: {{listData.description}}</h3>
     <task v-for="task in tasks" :taskData="task"></task>
 
-    <form class="mb-5" @submit.prevent="createTask">
+    <form class="mt-5" @submit.prevent="createTask">
       <label for="desc"> Task description </label>
       <input name="desc" type="text" v-model="taskConfig.description">
       <button type="submit">Add</button>
@@ -50,6 +50,11 @@
     },
     components: {
       Task
+    },
+    watch: {
+      listData(val) {
+        this.$store.dispatch('getTasks', this.listData._id)
+      }
     }
 
   }

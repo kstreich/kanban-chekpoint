@@ -1,7 +1,7 @@
 <template>
   <div class="">
-    <p>{{commentData.description}}</p>
-    <button @click="deleteComment(commentData._id)">Delete</button>
+    <p>{{commentData.description}}
+      <span><button @click="deleteComment(commentData._id)">Delete</button></span> </p>
   </div>
 </template>
 

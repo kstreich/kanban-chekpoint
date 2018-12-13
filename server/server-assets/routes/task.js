@@ -36,7 +36,7 @@ router.put('/:id', (req, res, next) => {
           next()
           return
         }
-        res.send("Successfully Updated")
+        res.send(task)
       });
     })
     .catch(err => {

@@ -5,7 +5,7 @@ var cors = require('cors')
 var port = process.env.PORT || 3000
 
 
-server.use(express.static(__dirname + "../client/dist"))
+server.use(express.static(__dirname + "/../client/dist"))
 
 var whitelist = ['http://localhost:8081', "https://kanban-cloud.herokuapp.com/"];
 var corsOptions = {

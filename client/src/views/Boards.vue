@@ -14,7 +14,7 @@
       <i @click="deleteBoard(board._id)" class="fas fa-trash-alt cursor iconSize"></i>
     </div>
 
-    <img class="picture" src="../../public/assets/cloud.png">
+    <img class="picture footer" src="../../public/assets/clouds-small.png">
   </div>
 
 </template>
@@ -55,7 +55,7 @@
   }
 
   .picture {
-    background-image: url("../../public/assets/cloud.png");
+    background-image: url("../../public/assets/clouds-small.png");
     background-repeat: no-repeat;
     background-size: cover;
     margin-top: 20vh;
@@ -65,6 +65,13 @@
 
   .cursor {
     cursor: pointer;
+  }
+
+  .footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
   }
 
   .iconSize {

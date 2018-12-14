@@ -1,9 +1,9 @@
 <template>
   <div v-if="" class="board container-fluid boardBackground">
-    <img class="" src="https://thumbs.gfycat.com/WidePowerfulBeauceron-small.gif">
+    <img class="giphyImg" src="https://thumbs.gfycat.com/WidePowerfulBeauceron-small.gif">
 
     <div class="row title">
-      <h3>Time to soar to organization!</h3>
+      <h3>Time to soar to</h3>
       <p>Create a board</p>
 
       <form @submit.prevent="createList" class="mb-5">
@@ -98,5 +98,9 @@
   .title {
     display: flex;
     flex-direction: column
+  }
+
+  .giphyImg {
+    height: 39vh;
   }
 </style>

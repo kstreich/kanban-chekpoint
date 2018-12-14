@@ -39,7 +39,7 @@
   }
 
   .marginHeader {
-    margin-left: 45rem;
+    margin-left: 73%;
   }
 
   #app {

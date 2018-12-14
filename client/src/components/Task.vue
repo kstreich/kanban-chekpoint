@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div class="mb-4">
     <h5>{{taskData.description}}
       <!-- <span><button @click="deleteTask(taskData._id)">Delete</button></span>
       <span> -->

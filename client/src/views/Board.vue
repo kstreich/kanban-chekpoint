@@ -3,7 +3,7 @@
     <img class="giphyImg" src="https://thumbs.gfycat.com/WidePowerfulBeauceron-small.gif">
 
     <div class="row title">
-      <h3>Time to soar to</h3>
+      <h3>Time to soar to success</h3>
       <p>Create a board</p>
 
       <form @submit.prevent="createList" class="mb-5">

@@ -79,11 +79,11 @@
     margin-top: 13vh;
   }
 
-  .loginBox {
+  /* .loginBox {
     display: flex;
     flex-direction: column;
     width: 16rem;
     justify-content: center;
     margin-left: 50%;
-  }
+  } */
 </style>

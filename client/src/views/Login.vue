@@ -14,7 +14,7 @@
         <input type="password" v-model="creds.password" placeholder="password">
         <button type="submit" class="btn btn-info btn-sm">Login</button>
       </form>
-      <form v-else @submit.prevent="register">
+      <form v-else @submit.prevent="register" class="loginMargin loginBox">
         <input type="text" v-model="newUser.name" placeholder="name">
         <input type="email" v-model="newUser.email" placeholder="email">
         <input type="password" v-model="newUser.password" placeholder="password">
@@ -68,7 +68,7 @@
 
   .seller {
     background-color: #f9f9f9;
-    height: 65vh;
+    height: 70vh;
   }
 
   .logoText {
@@ -76,6 +76,14 @@
   }
 
   .loginMargin {
-    margin-top: 17vh;
+    margin-top: 13vh;
+  }
+
+  .loginBox {
+    display: flex;
+    flex-direction: column;
+    width: 16rem;
+    justify-content: center;
+    margin-left: 50vh;
   }
 </style>

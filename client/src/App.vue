@@ -35,7 +35,7 @@
     color: white;
     padding: 11px;
     /* height: 6px; */
-    padding-left: 47px;
+    padding-left: 29px;
   }
 
   .marginHeader {
@@ -57,5 +57,9 @@
 
   #nav a.router-link-exact-active {
     color: #42b983;
+  }
+
+  a {
+    color: #2b3e50
   }
 </style>

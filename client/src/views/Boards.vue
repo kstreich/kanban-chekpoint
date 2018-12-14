@@ -5,14 +5,13 @@
     <form @submit.prevent="addBoard" class="mb-5">
       <input type="text" placeholder="title" v-model="newBoard.title" required>
       <input type="text" placeholder="description" v-model="newBoard.description">
-      <button type="submit" class="btn btn-primary"><i class="fas fa-plus-square"></i></button>
+      <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-plus-square"></i></button>
     </form>
     <div v-for="board in boards" :key="board._id">
       <router-link :to="{name: 'board', params: {boardId: board._id}}">
         <h3>{{board.title}} - {{board.description}}</h3>
       </router-link>
       <i @click="deleteBoard(board._id)" class="fas fa-trash-alt cursor iconSize"></i>
-
     </div>
 
     <img class="picture" src="../../public/assets/cloud.png">
@@ -53,15 +52,15 @@
 <style>
   body {
     background-color: #8dcfd0;
-
   }
 
   .picture {
     background-image: url("../../public/assets/cloud.png");
     background-repeat: no-repeat;
     background-size: cover;
-    margin-top: 30vh;
-    min-width: 100%
+    margin-top: 20vh;
+    max-width: 100%;
+
   }
 
   .cursor {

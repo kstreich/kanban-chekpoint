@@ -3,7 +3,7 @@
     <img class="" src="https://thumbs.gfycat.com/WidePowerfulBeauceron-small.gif">
 
     <div class="row title">
-      <h3>Time to get organized!</h3>
+      <h3>Time to soar to organization!</h3>
       <p>Create a board</p>
 
       <form @submit.prevent="createList" class="mb-5">
@@ -74,7 +74,7 @@
 <style>
   .boardBackground {
     background-image: url('../../public/assets/cloud.png');
-    height: 100vh;
+    height: 110vh;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

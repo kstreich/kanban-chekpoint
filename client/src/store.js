@@ -82,10 +82,9 @@ export default new Vuex.Store({
       auth.get('authenticate')
         .then(res => {
           commit('setUser', res.data)
-          // router.push({ name: 'boards' })
         })
         .catch(err => {
-          console.error(err)
+          console.error('Please login')
           router.push({ name: 'login' })
         })
     },
@@ -93,7 +92,7 @@ export default new Vuex.Store({
       auth.post('login', creds)
         .then(res => {
           commit('setUser', res.data)
-          router.push({ name: 'boards' })
+          dispatch('goToBoards')
         })
     },
     logout({ commit }) {
@@ -104,6 +103,10 @@ export default new Vuex.Store({
     },
 
     //BOARDS
+    goToBoards() {
+      router.push({ name: 'boards' })
+    },
+
     getBoards({ commit, dispatch }) {
       api.get('boards')
         .then(res => {

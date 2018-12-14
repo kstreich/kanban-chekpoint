@@ -1,17 +1,14 @@
 <template>
-  <div v-if="" class="tasks borderBox mb-5">
-    <!-- <p>This is where we pull our tasks</p> -->
-    <h3>List Name: {{listData.name}}</h3>
-    <h3 class="mb-5">List Description: {{listData.description}}</h3>
+  <div class="col-4 borderBox">
+    <h3>{{listData.name}}</h3>
+    <h5 class="mb-5">{{listData.description}}</h5>
     <task v-for="task in tasks" :taskData="task"></task>
-
     <form class="mt-5" @submit.prevent="createTask">
       <label for="desc"> Task description </label>
       <input name="desc" type="text" v-model="taskConfig.description">
-      <button type="submit">Add</button>
+      <button class="btn btn-sm btn-outline-info" type="submit"><i class="fas fa-plus-square"></i></button>
     </form>
-    <button @click="deleteList(listData._id)">Delete</button>
-
+    <i @click="deleteList(listData._id)" class="fas fa-trash-alt"></i>
   </div>
 </template>
 
@@ -61,7 +58,6 @@
 
 </script>
 
-<style scoped>
-
+<style>
 
 </style>

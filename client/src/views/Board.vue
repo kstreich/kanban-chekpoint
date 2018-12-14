@@ -1,23 +1,30 @@
 <template>
-  <div v-if="" class="board">
-    <img src="https://thumbs.gfycat.com/WidePowerfulBeauceron-small.gif">
+  <div v-if="" class="board container-fluid boardBackground">
+    <img class="" src="https://thumbs.gfycat.com/WidePowerfulBeauceron-small.gif">
 
-    <h3>This is the Board View</h3>
-    <form @submit.prevent="createList">
-      <label for="listName"> Enter List Name </label>
-      <input name="listName" type="text" v-model="listConfig.name">
-      <label for="desc"> Add description </label>
-      <input name="desc" type="text" v-model="listConfig.description">
-      <button type="submit">Add</button>
-    </form>
+    <div class="row title">
+      <h3>Time to get organized!</h3>
+      <p>Create a board</p>
 
-    <list v-for="list in lists" :listData="list">
-    </list>
+      <form @submit.prevent="createList" class="mb-5">
+        <label for="listName"> Enter Your List Name </label>
+        <input name="listName" type="text" v-model="listConfig.name">
+        <label for="desc"> Add List Description </label>
+        <input name="desc" type="text" v-model="listConfig.description">
+        <button type="submit" class="btn btn-info btn-sm">Add List</button>
+      </form>
+    </div>
+
+    <div class="lists row">
+      <list v-for="list in lists" :listData="list">
+      </list>
+    </div>
   </div>
 </template>
 
 <script>
   import List from '@/components/List.vue'
+  import clouds from '../../public/assets/cloud.png'
   export default {
     name: "board",
     mounted() {
@@ -30,7 +37,8 @@
         listConfig: {
           name: '',
           description: '',
-        }
+        },
+        clouds: clouds
       }
     },
     computed: {
@@ -64,7 +72,31 @@
 </script>
 
 <style>
+  .boardBackground {
+    background-image: url('../../public/assets/cloud.png');
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+  }
+
   .borderBox {
-    border: black solid 3px;
+    border: black solid 1px;
+    border-top: black solid 2px;
+    background: #fdfefc;
+    border-radius: 15px;
+
+  }
+
+  .lists {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .title {
+    display: flex;
+    flex-direction: column
   }
 </style>

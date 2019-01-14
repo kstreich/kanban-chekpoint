@@ -1,39 +1,38 @@
 <template>
-  <div class="mb-4">
+  <div class="mb-4 coloring">
     <h5>{{taskData.description}}
-      <!-- <span><button @click="deleteTask(taskData._id)">Delete</button></span>
-      <span> -->
-      <span><i @click="deleteTask(taskData._id)" class="fas fa-trash-alt cursor iconSize"></i></span></h5>
+      <span><i @click="deleteTask(taskData._id)" class="fas fa-trash-alt cursor iconSize"></i></span>
+    </h5>
 
-    <div class="dropdown">
-      <button id="mLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-info">
-        Move Task <i class="fas fa-caret-square-down"></i>
-      </button>
-      <div class="dropdown">
-        <div class="dropdown-menu">
-          <p>Available Lists</p>
-          <div class="dropdown-item" aria-labelledby="mLabel" v-for="list in lists" :key="list._id">
-            <p @click="moveTask(list._id)">{{list.name}}</p>
+    <div class="row">
+      <div class="dropdown col-6">
+        <button id="mLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn icon">
+          Move Task <i class="fas fa-caret-square-down"></i>
+        </button>
+        <div class="dropdown">
+          <div class="dropdown-menu">
+            <p>Available Lists</p>
+            <div class="dropdown-item" aria-labelledby="mLabel" v-for="list in lists" :key="list._id">
+              <p @click="moveTask(list._id)">{{list.name}}</p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    </span>
-    </h5>
-    <!-- add a taks vv -->
-    <!-- drop down for comments -->
-    <div class="dropdown">
-      <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-info">
-        Comments <i class="fas fa-caret-square-down"></i>
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dLabel">
-        <comment v-for="comment in comments" :commentData="comment"></comment>
-        <div>
-          <form @submit.prevent="createComment">
-            <label for="desc"> Comment </label>
-            <input name="desc" type="text" v-model="commentConfig.description">
-            <button class="btn btn-info" type="submit"><i class="fas fa-plus-square"></i></button>
-          </form>
+
+
+      <div class="dropdown col-6">
+        <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn icon">
+          Comments <i class="fas fa-caret-square-down"></i>
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dLabel">
+          <comment v-for="comment in comments" :commentData="comment"></comment>
+          <div>
+            <form @submit.prevent="createComment" class="inline">
+              <label for="desc"></label>
+              <input class="form-control" name="desc" type="text" v-model="commentConfig.description">
+              <button class="btn icon" type="submit"><i class="fas fa-plus-square"></i></button>
+            </form>
+          </div>
         </div>
       </div>
     </div>
@@ -93,6 +92,9 @@
 </script>
 
 <style>
-
-
+  .coloring {
+    background-color: #9e9e9e2b;
+    padding: 5px;
+    border-radius: 10px;
+  }
 </style>

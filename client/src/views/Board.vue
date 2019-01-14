@@ -1,19 +1,24 @@
 <template>
-  <div v-if="" class="board container-fluid boardBackground">
-    <img class="giphyImg" src="https://thumbs.gfycat.com/WidePowerfulBeauceron-small.gif">
+  <div class="board container-fluid boardBackground">
+    <!-- <img class="giphyImg" src="https://thumbs.gfycat.com/WidePowerfulBeauceron-small.gif"> -->
 
     <div class="row title">
-      <h3>Time to soar to success</h3>
+      <h3 class="textM">Time to soar to success</h3>
       <p>Create a board</p>
-
-      <form @submit.prevent="createList" class="mb-5">
-        <label for="listName"> Enter Your List Name </label>
-        <input name="listName" type="text" v-model="listConfig.name">
-        <label for="desc"> Add List Description </label>
-        <input name="desc" type="text" v-model="listConfig.description">
-        <button type="submit" class="btn btn-info btn-sm">Add List</button>
-      </form>
     </div>
+
+
+    <form @submit.prevent="createList" class="mb-5 row">
+      <div class="form-group col-5">
+        <label for="listName"> Enter Your List Name </label>
+        <input class="form-control" name="listName" type="text" v-model="listConfig.name">
+      </div>
+      <div class="form-group col-5">
+        <label for="desc"> Add List Description </label>
+        <input class="form-control" name="desc" type="text" v-model="listConfig.description">
+      </div>
+      <button type="submit" class="btn icon col-2 cursor">Add List</button>
+    </form>
 
     <div class="lists row">
       <list v-for="list in lists" :listData="list">
@@ -48,8 +53,8 @@
     },
     methods: {
       createList() {
-
         this.$store.dispatch('createList', { name: this.listConfig.name, description: this.listConfig.description, boardId: this.boardId })
+        event.target.reset()
       }
     },
 
@@ -102,5 +107,9 @@
 
   .giphyImg {
     height: 39vh;
+  }
+
+  .textM {
+    margin-top: 40vh;
   }
 </style>

@@ -1,14 +1,16 @@
 <template>
   <div class="col-4 borderBox">
     <h3>{{listData.name}}</h3>
-    <h5 class="mb-5">{{listData.description}}</h5>
-    <task v-for="task in tasks" :taskData="task"></task>
-    <form class="mt-5" @submit.prevent="createTask">
-      <label for="desc"> Task description </label>
-      <input name="desc" type="text" v-model="taskConfig.description">
-      <button class="btn btn-sm btn-outline-info" type="submit"><i class="fas fa-plus-square"></i></button>
+    <h5 class="">{{listData.description}}</h5>
+    <form class=" mb-5 inline" @submit.prevent="createTask">
+      <label for="desc"> Task </label>
+      <input class="form-control" name="desc" type="text" v-model="taskConfig.description">
+      <button class="btn icon" type="submit"><i class="fas fa-plus-square"></i></button>
     </form>
-    <i @click="deleteList(listData._id)" class="fas fa-trash-alt"></i>
+
+    <task v-for="task in tasks" :taskData="task"></task>
+
+    Delete Board <i @click="deleteList(listData._id)" class="fas fa-trash-alt cursor"></i>
   </div>
 </template>
 
@@ -59,5 +61,9 @@
 </script>
 
 <style>
-
+  .inline {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+  }
 </style>
